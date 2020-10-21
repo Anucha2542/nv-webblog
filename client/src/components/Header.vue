@@ -1,20 +1,11 @@
 <template>
     <div>
         <div class="nv-navbar">
-            
             <ul class="nav">
-<<<<<<< HEAD
-                <li><img src="@/assets/logo2.jpg" width="150px" id="logo" class = "logo"/></li>
-                <li><router-link :to="{name: 'books'}" >Books</router-link></li>
-=======
                 <li><router-link :to="{name: 'products'}" >Products</router-link></li>
->>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079
                 <li><router-link :to="{name: 'users'}" >Users</router-link></li>
                 <li><router-link :to="{name: 'login'}" >Login</router-link></li>
-                
-            </ul>
-            <ul class="nav">
-            <li><a v-on:click.prevent="logout" href="#">Logout</a></li>
+                <li><a v-on:click.prevent="logout" href="#">Logout</a></li>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -34,11 +25,8 @@ export default {
 }
 </script>
 <style scoped>
-    .logo {
-        float:left;
-    }
     .nv-navbar {
-        background-color:black;
+        background-color:palegoldenrod;
         width: 100%;
         padding:10px 0px 10px 0px;
     }
@@ -54,8 +42,7 @@ export default {
     .nv-navbar .nav li a {
         padding: 10px;
         text-decoration: none;
-        border-radius: 5px;
-        color:white;
+        color:gray;
         font-weight: bold;
     }
     .nv-navbar .nav li a:hover {
@@ -64,8 +51,7 @@ export default {
         color:darkslategrey;
     }
     .nv-navbar .nav li a.router-link-active {
-        border-radius: 5px;
-        background-color:gray;
+        background-color:gold;
         color:darkslategrey;
     }
     .clearfix {
