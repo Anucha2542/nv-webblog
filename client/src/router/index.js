@@ -19,11 +19,11 @@ import BlogCreate from '@/components/Blogs/CreateBlog'
 import BlogEdit from '@/components/Blogs/EditBlog'
 import BlogShow from '@/components/Blogs/ShowBlog'
 
-// Products
-import ProductIndex from '@/components/Products/Index'
-import ProductCreate from '@/components/Products/CreateProduct'
-import ProductEdit from '@/components/Products/EditProduct'
-import ProductShow from '@/components/Products/ShowProduct'
+// Books
+import BookIndex from '@/components/Books/Index'
+import BookCreate from '@/components/Books/CreateBook'
+import BookEdit from '@/components/Books/EditBook'
+import BookShow from '@/components/Books/ShowBook'
 
 // Upload Testing
 import Upload from '@/components/Utils/Upload'
@@ -81,27 +81,52 @@ export default new Router({
     name: 'blog',
     component: BlogShow
     },
-    // Producs
+<<<<<<< HEAD
+    // books
     {
-      path: '/Products',
-      name: 'Products',
+    path: '/books',
+    name: 'books',
+    component: BookIndex
+    },      
+    {
+    path: '/book/create',
+    name: 'books-create',
+    component: BookCreate      
+    },
+    {
+    path: '/book/edit/:bookId',
+    name: 'book-edit',
+    component: BookEdit
+    },
+    {
+    path: '/book/:bookId',
+    name: 'book',
+    component: BookShow
+    },
+    
+=======
+    // Products
+    {
+      path: '/products',
+      name: 'products',
       component: ProductIndex
       },
       {
-      path: '/Produtc/create',
-      name: 'Product-create',
+      path: '/product/create',
+      name: 'product-create',
       component: ProductCreate
       },
       {
-      path: '/Product/edit/:ProductId',
-      name: 'Product-edit',
+      path: '/product/edit/:productId',
+      name: 'product-edit',
       component: ProductEdit
       },
       {
-      path: '/Product/:ProductId',
-      name: 'Product',
+      path: '/product/:productId',
+      name: 'product',
       component: ProductShow
       },
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079
     // comments
     {
     path: '/comments',
@@ -114,5 +139,6 @@ export default new Router({
       name: 'upload',
       component: Upload
     },
+    // front
   ]
 })

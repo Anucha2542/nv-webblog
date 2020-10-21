@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg">.
         <h1>User Login</h1>
         <form v-on:submit.prevent="onLogin">
             <p>Username: <input type="text" v-model="email" /></p>
@@ -7,6 +7,8 @@
             <p><button type="submit">Login</button></p>
             <div class="error" v-if="error">{{error}}</div>
         </form>
+        <!-- แถบล่าง -->
+ <div class="blog-load-finished">--- zombie book ---</div>
     </div>
 </template>
 <script>
@@ -49,4 +51,14 @@ export default {
     .error {
         color:red;
     }
+    /*แถบล่าง*/
+.blog-load-finished {
+  padding: 4px;
+  text-align: center;
+  background: black;
+  color: white;
+}
+.bg{
+    background-color:skyblue;
+}
 </style>

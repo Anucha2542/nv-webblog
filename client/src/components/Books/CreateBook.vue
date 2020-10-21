@@ -1,15 +1,42 @@
 <template>
-  <div class="container blog-wrapper">
+  <div class="container book-wrapper">
     <main-header navsel="back"></main-header>
+<<<<<<< HEAD:client/src/components/Books/CreateBook.vue
     <h1>สร้างโพสต์</h1>
-    <form v-on:submit.prevent = "createBlog">
+    <form v-on:submit.prevent = "createBook">
       <p>
         <label for="" class="control-label">หัวข้อ: </label>
-        <input type="text" v-model="blog.title" class="form-control">        
+        <input type="text" v-model="book.namebook" class="form-control">        
       </p>
       <transition name="fade">
-        <div class="thumbnail-pic" v-if="blog.thumbnail != 'null'">
-          <img class="img-thumbnail" :src="BASE_URL+blog.thumbnail" alt="thumbnail">
+        <div class="thumbnail-pic" v-if="book.thumbnail != 'null'">
+          <img class="img-thumbnail" :src="BASE_URL+book.thumbnail" alt="thumbnail">
+=======
+    <h1>สร้างproduct</h1>
+    <form v-on:submit.prevent = "createproduct">
+      <p>
+        <label class="control-label">ชื่อ product: </label>
+        <input type="text" v-model="product.name" class="form-control">        
+      </p>
+      <p>
+        <label class="control-label">รสชาติ :</label>
+        <input type="text" v-model="product.taste" class="form-control">
+      </p>
+      <p>
+        <label class="control-label">price :</label>
+        <input type="text" v-model="product.price" class="form-control">
+      </p>
+      <p>
+        <label class="control-label">สถานะ :</label>
+        <input type="text" v-model="product.status" class="form-control">
+      </p>
+      <p>
+        รูปสินค้า 
+      </p>
+      <transition name="fade">
+        <div class="thumbnail-pic" v-if="product.thumbnail != 'null'">
+          <img class="img-thumbnail" :src="BASE_URL+product.thumbnail" alt="thumbnail">
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079:client/src/components/Products/CreateProduct.vue
         </div>
       </transition>
       <form enctype="multipart/form-data" novalidate>
@@ -39,22 +66,43 @@
         </transition-group>
         <div class="clearfix"></div>
       </div>  
-      <p><strong>เนื้อหา: </strong></p>
-      <p><vue-ckeditor v-model.lazy="blog.content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)" /></p>
+<<<<<<< HEAD:client/src/components/Books/CreateBook.vue
+      <p>
+        <label class="control-label">รายละเอียด :</label>
+        <input type="text" v-model="book.details" class="form-control">
+      </p>
+      <p>
+        <label class="control-label">ราคา :</label>
+        <input type="text" v-model="book.price" class="form-control">
+      </p>
       <p>
         <label class="control-label">ประเภท :</label>
-        <input type="text" v-model="blog.category" class="form-control">
-      </p> 
+        <input type="text" v-model="book.category" class="form-control">
+      </p>
+      <p>
+        <label class="control-label">จำนวนหนังสือ :</label>
+        <input type="text" v-model="book.status" class="form-control">
+      </p>
       <p>
         <button class="btn btn-success" type="submit">สร้างโพสต์</button>
-        <button class="btn btn-default" type="button" v-on:click="navigateTo('/blogs')">กลับ</button>
+        <button class="btn btn-default" type="button" v-on:click="navigateTo('/books')">กลับ</button>
+=======
+       
+      <p>
+        <button class="btn btn-success" type="submit">สร้างProduct</button>
+        <button class="btn btn-default" type="button" v-on:click="navigateTo('/products')">กลับ</button>
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079:client/src/components/Products/CreateProduct.vue
       </p> 
     </form>   
     <br>    
   </div>
 </template>
 <script>
-import BlogsService from '@/services/BlogsService'
+<<<<<<< HEAD:client/src/components/Books/CreateBook.vue
+import BooksService from '@/services/BooksService'
+=======
+import ProductService from '@/services/ProductService'
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079:client/src/components/Products/CreateProduct.vue
 import VueCkeditor from "vue-ckeditor2"
 import UploadService from '@/services/UploadService'
 import {mapState} from 'vuex'
@@ -72,13 +120,23 @@ export default {
   },
   data () {
     return {
-      blog: {
-        title: '',
+<<<<<<< HEAD:client/src/components/Books/CreateBook.vue
+      book: {
+        namebook: '',
         thumbnail: 'null',
         pictures: [],
-        content: '',
         category: '',
-        status: 'Suspend'
+        details: '',
+        price: '',
+=======
+      product: {
+        name: '',
+        tast :'',
+        thumbnail: 'null',
+        pictures: [],
+        price : '',
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079:client/src/components/Products/CreateProduct.vue
+        status: ''
       },
       config: {
         toolbar: [
@@ -103,7 +161,11 @@ export default {
     },
     useThumbnail (filename) {     
       console.log(filename) 
-      this.blog.thumbnail = filename
+<<<<<<< HEAD:client/src/components/Books/CreateBook.vue
+      this.book.thumbnail = filename
+=======
+      this.product.thumbnail = filename
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079:client/src/components/Products/CreateProduct.vue
     },
     async delFile (material){
       let result = confirm("Want to delete?")
@@ -178,12 +240,21 @@ export default {
     clearUploadResult: function(){            
       setTimeout(() => this.reset(), 5000);
     },
-    async createBlog () {
-      this.blog.pictures = JSON.stringify(this.pictures)
+<<<<<<< HEAD:client/src/components/Books/CreateBook.vue
+    async createBook () {
+      this.book.pictures = JSON.stringify(this.pictures)
       try {
-        await BlogsService.post(this.blog)
+        await BooksService.post(this.book)
         this.$router.push({
-          name: 'blogs'
+          name: 'books'
+=======
+    async createproduct () {
+      this.product.pictures = JSON.stringify(this.pictures)
+      try {
+        await ProductService.post(this.product)
+        this.$router.push({
+          name: 'products'
+>>>>>>> 7ea7ba0f51101fce867be387072c14e56448c079:client/src/components/Products/CreateProduct.vue
         })
       } catch (err) {
         console.log(err)
@@ -373,5 +444,8 @@ ul.pictures li img {
 /* thumbnail */
 .thumbnail-pic img{
  width:200px;
+}
+.bg{
+    background-color:chocolate;
 }
 </style>

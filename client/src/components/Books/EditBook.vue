@@ -1,31 +1,41 @@
 <template>
     <div>
-        <h1>Edit product</h1>
-        <form v-on:submit.prevent = "editproduct">
-            <p>name: <input type="text" v-model="product.name"></p>
-            <p>taste: <input type="text" v-model="product.taste"></p>
-            <p>price: <input type="text" v-model="product.price"></p>
-            <p>status: <input type="text" v-model="product.status"></p>
+        <h1>Edit Books</h1>
+        <form v-on:submit.prevent = "editBook">
+            <p>ชื่อหนังสือ: <input type="text" v-model="book.namebook"></p>
+            <p><strong>รายละเอียด:</strong></p>
+            <vue-ckeditor 
+                v-model.lazy="book.details" 
+                :config="config" 
+                @blur="onBlur($event)" 
+                @focus="onFocus($event)"
+            />
+            <p>ราคา: <input type="text" v-model="book.price"></p>
+            <p>ประเภท: <input type="text" v-model="book.category"></p>
+            <p>จำนวนหนังสือ: <input type="text" v-model="book.status"></p>
             <p>
-            <button type="submit">update product</button>
-            <button v-on:click="navigateTo('/products')">กลับ</button>
+            <button type="submit">update book</button>
+            <button v-on:click="navigateTo('/books')">กลับ</button>
             </p>
         </form>
+        <!-- แถบล่าง -->
+ <div class="blog-load-finished">--- zombie book ---</div>
     </div>
 </template>
 <script>
-import ProductService from '@/services/ProductService'
+import BooksService from '@/services/BooksService'
 import VueCkeditor from "vue-ckeditor2"
 
 export default {
     components: { VueCkeditor },
     data () {
         return {
-            product: {
-                name: '',
-                tast : '',
+            book: {
+                namebook: '',
                 thumbnail: 'null',
-                pictures: 'null',
+                pictures: [],
+                category: '',
+                detail: '',
                 price: '',
                 status: ''
             },
@@ -38,11 +48,11 @@ export default {
         }
     },
     methods: {
-        async editproduct () {
+        async editBook () {
             try {
-                await ProductService.put(this.product)
+                await BooksService.put(this.book)
                 this.$router.push({
-                    name: 'products'
+                    name: 'books'
                 })
             } catch (err) {
                 console.log(err)
@@ -52,8 +62,8 @@ export default {
     },
     async created () {
         try {
-            let productId = this.$route.params.productId
-            this.product = (await ProductService.show(productId)).data
+            let bookId = this.$route.params.bookId
+            this.book = (await BooksService.show(bookId)).data
             this.config.toolbar = [
                 {
                     name: "document",
@@ -173,4 +183,11 @@ export default {
 }
 </script>
 <style scoped>
+/*แถบล่าง*/
+.blog-load-finished {
+  padding: 4px;
+  text-align: center;
+  background: black;
+  color: white;
+}
 </style>
