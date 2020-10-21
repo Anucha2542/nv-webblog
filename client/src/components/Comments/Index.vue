@@ -1,6 +1,7 @@
 <template>
-    <div class="bg">
+    <div>
         <h2>Get all comments</h2>
+        <p><button v-on:click="logout">Logout</button></p>
         <h4>จำนวน comment {{comments.length}}</h4>
         <div v-for="comment in comments" v-bind:key="comment.id">
             <p>id: {{ comment.id }}</p>
@@ -12,11 +13,8 @@
                 <button v-on:click="editComment('/comment/'+ comment.id)">แก้ไข comment</button>
                 <button v-on:click="deleteComment(comment)">ลบข้อมูล</button>
             </p>
-            <p><button v-on:click="logout">Logout</button></p>
             <hr>
         </div>
-        <!-- แถบล่าง -->
- <div class="blog-load-finished">--- zombie book ---</div>
     </div>
 </template>
 <script>
@@ -63,14 +61,4 @@ export default {
 }
 </script>
 <style scoped>
-/*แถบล่าง*/
-.blog-load-finished {
-  padding: 4px;
-  text-align: center;
-  background: black;
-  color: white;
-}
-.bg{
-    background-color:skyblue;
-}
 </style>

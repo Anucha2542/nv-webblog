@@ -1,5 +1,5 @@
 <template>
-    <div class="bg">.
+    <div>
         <h2>Get all users</h2>
         <h4>จำนวนผู้ใช้งาน {{users.length}}</h4>
         <p><button v-on:click="navigateTo('/user/create')">สร้างผู้ใช้งาน</button></p>
@@ -15,8 +15,6 @@
                 <p><button v-on:click="logout">Logout</button></p>
             <hr>
         </div>
-        <!-- แถบล่าง -->
- <div class="blog-load-finished">--- zombie book ---</div>
     </div>
 </template>
 <script>
@@ -57,15 +55,4 @@
     }
 </script>
 <style scoped>
-/*แถบล่าง*/
-.blog-load-finished {
-  padding: 4px;
-  text-align: center;
-  background: black;
-  color: white;
-}
-.bg{
-    background-color:skyblue;
-  
-}
 </style>

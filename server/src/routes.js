@@ -3,7 +3,6 @@ const UserAuthenController = require('./controllers/UserAuthenController')
 const isAuthenController = require('./authen/isAuthenController')
 const BlogController = require('./controllers/BlogController')
 const CommentController = require('./controllers/CommentController')
-const BookController = require('./controllers/BookController')
 
 let multer = require("multer")
 // upload section
@@ -89,29 +88,6 @@ module.exports = (app) => {
     app.get('/comments',
         CommentController.index
     )
-
-    // book route
-    // create book
-    app.post('/book',
-        BookController.create
-    )
-    // edit book, suspend, active
-    app.put('/book/:bookId',
-        BookController.put
-    )
-    // delete book
-    app.delete('/book/:bookId',
-        BookController.remove
-    )
-    // get blog by id
-    app.get('/book/:bookId',
-        BookController.show
-    )
-    // get all book
-    app.get('/books',
-        BookController.index
-    )
-
 
     // upload
     app.post("/upload", function(req, res) {

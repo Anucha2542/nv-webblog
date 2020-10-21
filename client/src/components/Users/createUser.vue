@@ -1,5 +1,5 @@
 <template>
-    <div class="bg">
+    <div>
         <h1>Create User</h1>
         <form v-on:submit.prevent = "createUser">
             <p>name: <input type="text" v-model="user.name"></p>
@@ -47,7 +47,4 @@ export default {
 }
 </script>
 <style scoped>
-.bg{
-    background-color:skyblue;
-}
 </style>

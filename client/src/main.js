@@ -8,11 +8,15 @@ import store from './store'
 import VueResource from 'vue-resource'
 import VueCkeditor from 'vue-ckeditor2'
 import BackHeader from '@/components/Header.vue'
+
 Vue.component('back-header', BackHeader)
 Vue.config.productionTip = false
+
 Vue.use(VueResource)
 Vue.use(VueCkeditor)
+
 sync(store, router)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
